@@ -9,6 +9,7 @@ namespace user_good
         [TestMethod]
         public void TestMethod1()
         {
+            Assert.AreEqual("Success", user_good.good.add_good("Tim", "Apple", "Face2Face"));
         }
     }
 }
