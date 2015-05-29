@@ -9,7 +9,7 @@ namespace team4
         [TestMethod]
         public void TestMethod1()
         {
-            int a = 0;
+            //Assert.AreEqual("Name" , Login_Logout.);
         }
     }
 }

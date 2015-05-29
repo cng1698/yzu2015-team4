@@ -25,6 +25,10 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+<<<<<<< HEAD
+=======
+    <IntermediateOutputPath>C:\Users\user\AppData\Local\Temp\vsFCB9.tmp\Debug\</IntermediateOutputPath>
+>>>>>>> ae82f4fcf23967bfa95c2e8c3e9d82449a564c44
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,6 +37,10 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+<<<<<<< HEAD
+=======
+    <IntermediateOutputPath>C:\Users\user\AppData\Local\Temp\vsFCB9.tmp\Release\</IntermediateOutputPath>
+>>>>>>> ae82f4fcf23967bfa95c2e8c3e9d82449a564c44
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -50,7 +58,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Email_Varify.cs" />
+=======
+    <Compile Include="Creat_good.cs" />
+    <Compile Include="Login_Logout.cs" />
+>>>>>>> ae82f4fcf23967bfa95c2e8c3e9d82449a564c44
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Emailtest.cs" />
