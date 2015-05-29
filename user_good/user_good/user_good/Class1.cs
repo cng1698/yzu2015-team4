@@ -8,11 +8,12 @@ namespace user_good
 {
     class good
     {
-        static public string add_good(string user, string name, string contract){
-            string data = user + "\t" + name + "\t" + contract;
+        static public string add_good(string user, string name)
+        {
+            string data = user + "\t" + name;
             try
             {
-                System.IO.File.WriteAllText(@"..\..\..\dummy_db", data);
+                System.IO.File.WriteAllText(@"..\..\..\goods_dummy_db", data);
             }
             catch{
                 return "Fail";
@@ -20,9 +21,18 @@ namespace user_good
             return "Success";
         
         }
-        public int aa()
+        static public string add_account(string account, string passwd, string email)
         {
-            return 1;
+            string data = account + "\t" + passwd + "\t" + email;
+            try
+            {
+                System.IO.File.WriteAllText(@"..\..\..\account_dummy_db", data);
+            }
+            catch
+            {
+                return "Fail";
+            }
+            return "Success";
         }
     }
 }
