@@ -8,32 +8,45 @@ namespace team4
 {
     class Login_Logout
     {
-        static void Login()
+        public static void Login()
         {
-            string username;
-            string password;
-            Console.WriteLine("Username: ");
-            username = Console.ReadLine();
-            Console.WriteLine("Password: ");
-            password = loadpassword();
-            Console.WriteLine(password);
+            bool correct = false;
+            string username = "";
+            string password = "";
+            do
+            {
+                Console.Write("Username: ");
+                username = Console.ReadLine();
+                Console.Write("Password: ");
+                password = loadpassword();
+                Console.WriteLine("");
+                if (username == "" || password == "")
+                {
+                    Console.WriteLine("帳號密碼不能空白，請重新輸入");
+                }
+            } while (username == "" || password == "");
+
             Console.ReadLine();
         }
-        static string loadpassword()
+        public static string loadpassword()
         {
             string password = "";
             ConsoleKeyInfo input = Console.ReadKey(true);
             while (input.Key != ConsoleKey.Enter)
             {
-                if(input.Key != ConsoleKey.Backspace)
+                if (input.Key != ConsoleKey.Backspace)
                 {
-                    Console.WriteLine("*");
+                    Console.Write("*");
                     password += input.KeyChar;
                 }
                 else
                 {
                     password = password.Substring(0, password.Length - 1);
+                    Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
+                    Console.Write(" ");
+                    Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
                 }
+                input = Console.ReadKey(true);
             }
             return password;
         }
