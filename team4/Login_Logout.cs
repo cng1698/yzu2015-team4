@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace team4
 {
@@ -24,7 +25,19 @@ namespace team4
                 {
                     Console.WriteLine("帳號密碼不能空白，請重新輸入");
                 }
-            } while (username == "" || password == "");
+                else
+                {
+                    correct = check(username, password);
+                    if (!correct)
+                    {
+                        Console.WriteLine("登入失敗，請重新輸入");
+                    }
+                    else
+                    {
+                        Console.WriteLine("登入成功");
+                    }
+                }
+            } while (username == "" || password == "" || !correct);
 
             Console.ReadLine();
         }
@@ -50,5 +63,29 @@ namespace team4
             }
             return password;
         }
+        public static bool check(string username, string password)
+        {
+            StreamReader sr = new StreamReader("account_dummy_db");
+            string srtemp = "";
+            string[] account;
+            while (srtemp != null)
+            {
+                srtemp = sr.ReadLine();
+                if (srtemp == null)
+                {
+                    break;
+                }
+                account = srtemp.Split('\t');
+                if (username == account[0])
+                {
+                    if (password == account[1])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
     }
+    
 }
