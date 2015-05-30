@@ -7,9 +7,13 @@ namespace team4
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void dbtest()
         {
-            //Assert.AreEqual("Name" , Login_Logout.);
+            user temp_user = new user("Tim", "account_for_tim", "Password", 1, "tim@mail.com");
+            Assert.IsTrue(team4.database.addUser(temp_user));
+            //Assert.IsTrue(true);
+
         }
+
     }
 }

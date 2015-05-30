@@ -13,7 +13,7 @@ namespace user_good
             string data = user + "\t" + name;
             try
             {
-                System.IO.File.WriteAllText(@"..\..\..\goods_dummy_db", data);
+                System.IO.File.WriteAllText(@"..\..\..\..\..\database\goods_dummy_db", data);
             }
             catch{
                 return "Fail";
