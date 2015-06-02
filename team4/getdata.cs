@@ -28,6 +28,7 @@ namespace team4
 				
 				//id = getUserLastID();
 			}
+        /*
 		static public int getUserLastID()
 		{
             try
@@ -49,15 +50,8 @@ namespace team4
             }
 			
 		}
-
-        public user()
-        {
-            name = "";
-            account = "";
-            pwd = "";
-            role = -1;
-            email = "";
-        }
+        */
+        
 		
     }
 
@@ -87,7 +81,7 @@ namespace team4
 			
 			//id = getGoodLastID();
 		}
-		
+		/*
 		static public int getGoodLastID()
 		{
             System.IO.StreamReader file = new System.IO.StreamReader(@"../../../../../database/good_db_dummy");
@@ -101,7 +95,7 @@ namespace team4
 			}
 			return last_id;
 		}
-
+        */
     }
 
     class database
@@ -111,7 +105,8 @@ namespace team4
 		public static char[] split_delim = { '\t' };
 
 
-        static public bool addUser(user new_user){
+        static public bool addUser(user new_user)
+        {
 			string data = new_user.name + "\t" + new_user.account + "\t" + new_user.pwd + "\t" + new_user.role.ToString() + "\t" + new_user.email + "\n";
 
             try
@@ -127,7 +122,7 @@ namespace team4
 
 
 		
-        static user getUserByAccount(string account)//get user by account, return the id of it, if not exist, return a user with all filds are empty
+        static public user getUserByAccount(string account)//get user by account, return it, if not exist, return a user with all filds are initialized
         {
 			System.IO.StreamReader file = new System.IO.StreamReader(@account_path);
             string line;
@@ -141,8 +136,58 @@ namespace team4
 				}
 			}
 
-            user temp = new user();
+            user temp = new user();//empty user
             return temp;
         }
+
+        static public List<user> getAllUser()
+        {
+            System.IO.StreamReader file = new System.IO.StreamReader(@account_path);
+            string line;
+            List<user> userList = new List<user>{};
+            while ((line = file.ReadLine()) != null)
+            {
+                string[] data_set = line.Split(split_delim);
+                user res = new user(data_set[0], data_set[1], data_set[2], Convert.ToInt32(data_set[3]), data_set[4]);
+                userList.Add(res);
+            }
+            return userList;
+        }
+
+        static public bool addGood(good new_good)
+        {
+            string data = new_good.name + "\t" + new_good.content + "\t" + new_good.amount.ToString() + "\t" + new_good.price.ToString() + "\t"
+                    + new_good.picture + "\t" + new_good.bid.ToString() + "\t" + new_good.buyer + "\t" + new_good.seller + "\n";
+
+            try
+            {
+                System.IO.File.AppendAllText(good_path, data);
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        static public good getGoodByName(string name)//get user by account, return it, if not exist, return a user with all filds are initialized
+        {
+            System.IO.StreamReader file = new System.IO.StreamReader(@good_path);
+            string line;
+            while ((line = file.ReadLine()) != null)
+            {
+                string[] data_set = line.Split(split_delim);
+                if (data_set[0] == name)
+                {
+                    good res = new good(data_set[0], data_set[1], Convert.ToInt32(data_set[2]), Convert.ToInt32(data_set[3]), data_set[4], Convert.ToInt32(data_set[5]), data_set[6], data_set[7]);
+                    return res;
+                }
+            }
+
+            good temp = new good();//empty good
+            return temp;
+        }
+
     }
 }
