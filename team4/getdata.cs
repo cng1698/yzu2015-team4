@@ -49,6 +49,15 @@ namespace team4
             }
 			
 		}
+
+        public user()
+        {
+            name = "";
+            account = "";
+            pwd = "";
+            role = -1;
+            email = "";
+        }
 		
     }
 
@@ -118,7 +127,7 @@ namespace team4
 
 
 		
-        static int getUserByAccount(string account)//get user by account, return the id of it
+        static user getUserByAccount(string account)//get user by account, return the id of it, if not exist, return a user with all filds are empty
         {
 			System.IO.StreamReader file = new System.IO.StreamReader(@account_path);
             string line;
@@ -127,12 +136,13 @@ namespace team4
 				string[] data_set = line.Split(split_delim);
 				if(data_set[1] == account)
 				{
-					return Convert.ToInt32(data_set[5]);
+                    user res = new user(data_set[0], data_set[1], data_set[2], Convert.ToInt32(data_set[3]), data_set[4]);
+                    return res;
 				}
 			}
 
-            
-            return 0;
+            user temp = new user();
+            return temp;
         }
     }
 }
