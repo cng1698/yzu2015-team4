@@ -4,36 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-namespace Yzu2015team4
+namespace team4
 {
     class Register
     {
-        internal static bool CheckUsernameNotExist(string username)
+        internal static bool CheckName(string name)
         {
-            StreamReader sr = new StreamReader("member.txt", Encoding.Default);
+            if (name.Length > 0)
+                return true;
 
-            string line;
-            string[] splitMember;
-            while ((line = sr.ReadLine()) != null)
-            {
-                splitMember = line.Split(new Char[] { ' ' });
-
-                if (splitMember[0] == username)
-                {
-                    Console.WriteLine("This username exist!");
-                    return false;
-                }
-            }
-
-            return true;
+            return false;
         }
 
-        internal static bool CheckUsername(string username)
+        
+        internal static bool CheckAccount(string account)
         {
-            if (username.Length > 0)
+            if (account.Length > 0 )
                 return true;
-            else
-                Console.WriteLine("You didnt input anything!");
+
+            return false;
+        }
+
+        internal static bool CheckAccountNotExist(string account)
+        {
+
+            if (database.getUserByAccount(account).account != null)
+                return true;
 
             return false;
         }
@@ -42,25 +38,39 @@ namespace Yzu2015team4
         {
             if (password.Length > 0)
                 return true;
-            else
-                Console.WriteLine("You didnt input anything!");
-
 
             return false;
         }
 
-        internal static void StreamWriteTxt(string username, string password)
+        internal static bool CheckRole(int rolenumber)
         {
-            //StreamWriter userDataBase = new StreamWriter(@"C:\secret_plan.txt");
-            string currentFolder = Directory.GetCurrentDirectory();
+            if (rolenumber == 1 || rolenumber == 2)
+                return true;
 
-            //FileStream fs = new FileStream(currentFolder + "\\member.txt", FileMode.Create);
+            return false;
+        }
 
-            StreamWriter sw = new StreamWriter("member.txt", true, Encoding.Unicode);
+        internal static bool CheckEmail(string email)
+        {
+            bool checkLength = false;
+            if (email.Length > 0)
+                checkLength = true;
 
-            sw.WriteLine(username + " " + password);
+            bool checkType = false;
 
-            sw.Close();
+            char[] splitEmail = email.ToCharArray(); 
+            for (int i = 0; i < email.Length; i++)
+            {
+                if (splitEmail[i] == '@'){
+                    checkType = true;
+                    break;
+                }
+            }
+
+            if (checkLength && checkType)
+                return true;
+            else
+                return false;
         }
     }
 }
