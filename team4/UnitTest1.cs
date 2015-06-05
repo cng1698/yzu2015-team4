@@ -75,57 +75,7 @@ namespace team4
             Assert.AreEqual(false, team4.Register.CheckEmail(""));
             Assert.AreEqual(false, team4.Register.CheckEmail("12345"));
         }
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	    // logout
-	    [TestMethod]
-=======
-	// logout
-	[TestMethod]
->>>>>>> parent of 1599390... email varify new version
-=======
-	// logout
-	[TestMethod]
->>>>>>> parent of 1599390... email varify new version
-=======
-	// logout
-	[TestMethod]
->>>>>>> parent of 1599390... email varify new version
-=======
-	// logout
-	[TestMethod]
->>>>>>> parent of 1599390... email varify new version
-=======
-	// logout
-	[TestMethod]
->>>>>>> parent of 1599390... email varify new version
-=======
-	// logout
-	[TestMethod]
->>>>>>> parent of 2c50196... Change Login_Logout.cs to Login.cs and add Login test
-=======
-	// logout
-	[TestMethod]
->>>>>>> parent of 1599390... email varify new version
-            //1:登出
-            //2:不登出
-            //3:選擇登出但問題出在後者選項
-            //4:前者選項有誤
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 1599390... email varify new version
-        public void logoutinput()
-        {   
-=======
-        // logout
+		 // logout
         [TestMethod]
         //1:登出
         //2:不登出
@@ -133,11 +83,6 @@ namespace team4
         //4:前者選項有誤
         public void logoutinput()
         {
->>>>>>> 2c501968272871295f9b33edc4808ab9ffe73bd0
-=======
-        public void logoutinput()
-        {   
->>>>>>> parent of 2c50196... Change Login_Logout.cs to Login.cs and add Login test
             //正常情況
 
             Assert.AreEqual(1, team4.logoutinput.logout(1, "Y"));//選擇登出並確定
@@ -145,30 +90,14 @@ namespace team4
             Assert.AreEqual(2, team4.logoutinput.logout(2, ""));//沒選擇登出
             Assert.AreEqual(2, team4.logoutinput.logout(2, "Y"));//沒選擇登出，後者選項不跳出
             Assert.AreEqual(2, team4.logoutinput.logout(2, "N"));//沒選擇登出，後者選項不跳出
-           
+
             //非正常情況
-            
+
             Assert.AreEqual(3, team4.logoutinput.logout(1, ""));//選擇登出但未確定
             Assert.AreEqual(3, team4.logoutinput.logout(1, "YFSDFSD"));//選擇登出，但後者選項不正確
             Assert.AreEqual(4, team4.logoutinput.logout(123, "Y"));//無法判斷是否有按下登出
             Assert.AreEqual(4, team4.logoutinput.logout(123, "FSDF"));//無法判斷是否有按下登出
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        
-        */ 
 
-        [TestMethod]
-        public void email_varify()
-        {
-            Assert.IsTrue(Email_Varify.verify(1, "account_for_tim"));
-=======
-
-<<<<<<< HEAD
 
         }
         [TestMethod]
@@ -187,26 +116,35 @@ namespace team4
             //帳號密碼錯誤
             Assert.AreEqual("帳號或密碼錯誤", Login.Check("account_for_tim", "12456156"));
             Assert.AreEqual("帳號或密碼錯誤", Login.Check("asds15156156", "Password"));
+        }
+        //Creat_Good
+        [TestMethod]
+        public void CheckCreatGood()
+        {
+            Assert.AreEqual(true, team4.Creat_good.CheckName("HTC"));
+            Assert.AreEqual(false, team4.Creat_good.CheckName(""));
 
-=======
+            Assert.AreEqual(true, team4.Creat_good.CheckContent("M8"));
+            Assert.AreEqual(false, team4.Creat_good.CheckContent(""));
 
-        
->>>>>>> parent of 1599390... email varify new version
-=======
+            Assert.AreEqual(true, team4.Creat_good.CheckPrice(20000));
+            Assert.AreEqual(false, team4.Creat_good.CheckPrice(-200));
 
-        
->>>>>>> parent of 1599390... email varify new version
-=======
+            Assert.AreEqual(true, team4.Creat_good.CheckAmount(10));
+            Assert.AreEqual(false, team4.Creat_good.CheckAmount(-30));
 
-        
->>>>>>> parent of 1599390... email varify new version
-=======
-        
->>>>>>> parent of 2c50196... Change Login_Logout.cs to Login.cs and add Login test
-=======
+            Assert.AreEqual(true, team4.Creat_good.CheckPicture("M8.jpg"));
+            Assert.AreEqual(false, team4.Creat_good.CheckPicture(""));
+        }
 
-        
->>>>>>> parent of 1599390... email varify new version
+        [TestMethod]
+        public void CheckSetGood()
+        {
+            //Assert.AreEqual(true, team4.Creat_good.SetGood("HTC", "M8", 20000, 10, "M8.jpg", "Tim"));
+            // Assert.AreEqual(false, team4.Creat_good.CreatGood("HTC", "M8", 20000, 10, "M8.jpg", "Tim"));
+
+            //good temp_good = new good("iPhone", "bank_transfer", 20, 25000, "iPhone.jpg", 50, "\0", "Messi");
+            //Assert.IsTrue(team4.database.addGood(temp_good));
         }
     }
 }
