@@ -79,8 +79,13 @@ namespace team4
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    // logout
 	    [TestMethod]
+=======
+	// logout
+	[TestMethod]
+>>>>>>> parent of 1599390... email varify new version
 =======
 	// logout
 	[TestMethod]
@@ -122,6 +127,7 @@ namespace team4
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         
         */ 
 
@@ -150,6 +156,10 @@ namespace team4
             Assert.AreEqual("帳號或密碼錯誤", Login.Check("account_for_tim", "12456156"));
             Assert.AreEqual("帳號或密碼錯誤", Login.Check("asds15156156", "Password"));
 
+=======
+
+        
+>>>>>>> parent of 1599390... email varify new version
         }
     }
 }
