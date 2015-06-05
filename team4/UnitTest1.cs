@@ -83,6 +83,7 @@ namespace team4
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    // logout
 	    [TestMethod]
 =======
@@ -109,11 +110,18 @@ namespace team4
 	// logout
 	[TestMethod]
 >>>>>>> parent of 2c50196... Change Login_Logout.cs to Login.cs and add Login test
+=======
+	// logout
+	[TestMethod]
+>>>>>>> parent of 1599390... email varify new version
             //1:登出
             //2:不登出
             //3:選擇登出但問題出在後者選項
             //4:前者選項有誤
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 1599390... email varify new version
         public void logoutinput()
         {   
 =======
@@ -144,6 +152,7 @@ namespace team4
             Assert.AreEqual(3, team4.logoutinput.logout(1, "YFSDFSD"));//選擇登出，但後者選項不正確
             Assert.AreEqual(4, team4.logoutinput.logout(123, "Y"));//無法判斷是否有按下登出
             Assert.AreEqual(4, team4.logoutinput.logout(123, "FSDF"));//無法判斷是否有按下登出
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -194,6 +203,10 @@ namespace team4
 =======
         
 >>>>>>> parent of 2c50196... Change Login_Logout.cs to Login.cs and add Login test
+=======
+
+        
+>>>>>>> parent of 1599390... email varify new version
         }
     }
 }
