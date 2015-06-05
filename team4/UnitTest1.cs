@@ -77,13 +77,18 @@ namespace team4
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    // logout
 	    [TestMethod]
+=======
+	// logout
+	[TestMethod]
+>>>>>>> parent of 1599390... email varify new version
             //1:登出
             //2:不登出
             //3:選擇登出但問題出在後者選項
             //4:前者選項有誤
-       /* public void logoutinput()
+        public void logoutinput()
         {   
 =======
         // logout
@@ -109,6 +114,7 @@ namespace team4
             Assert.AreEqual(3, team4.logoutinput.logout(1, "YFSDFSD"));//選擇登出，但後者選項不正確
             Assert.AreEqual(4, team4.logoutinput.logout(123, "Y"));//無法判斷是否有按下登出
             Assert.AreEqual(4, team4.logoutinput.logout(123, "FSDF"));//無法判斷是否有按下登出
+<<<<<<< HEAD
 <<<<<<< HEAD
         
         */ 
@@ -138,6 +144,10 @@ namespace team4
             Assert.AreEqual("帳號或密碼錯誤", Login.Check("account_for_tim", "12456156"));
             Assert.AreEqual("帳號或密碼錯誤", Login.Check("asds15156156", "Password"));
 >>>>>>> 2c501968272871295f9b33edc4808ab9ffe73bd0
+=======
+
+        
+>>>>>>> parent of 1599390... email varify new version
         }
     }
 }
