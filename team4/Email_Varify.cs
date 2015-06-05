@@ -6,54 +6,23 @@ using System.Threading.Tasks;
 
 namespace team4
 {
-
-    public struct account_varify
-    {
-        public string account, verification_code;
-
-        public account_varify(string a, string b)
-        {
-            account = a;
-            verification_code = b;
-        }
-    }
-
-
     class Email_Varify
     {
-
-        internal static bool verify()
+        internal static bool verify( int input  , string name ="" )
         {
-            account_varify user = new account_varify();
-            user.account = "Jerry";
-            user.verification_code = produce_code();
+            user user_data = database.getUserByAccount(name);
 
-            string input = Console.ReadLine();
-
-
-            if( if_same(user.verification_code , input))
+            //string input = Console.ReadLine();
+ 
+            if( if_same(user_data.role , input))
                 return true ;
             else
                 return false ;
-
         }
 
-        internal static string produce_code()
+        internal static bool if_same( int role_num , int checknum )
         {
-            string code = "abcd";
-
-            /*int i = 0 ;
-            while (i < 4)
-            {
-                code += 
-                i++;
-            }*/
-            return code;
-        }
-
-        internal static bool if_same( string a , string b )
-        {
-            if( a== b )
+            if (role_num == checknum)
                 return true ;
             else 
                 return false;

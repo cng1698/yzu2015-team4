@@ -76,13 +76,13 @@ namespace team4
             Assert.AreEqual(false, team4.Register.CheckEmail("12345"));
         }
 
-	// logout
-	[TestMethod]
+	    // logout
+	    [TestMethod]
             //1:登出
             //2:不登出
             //3:選擇登出但問題出在後者選項
             //4:前者選項有誤
-        public void logoutinput()
+       /* public void logoutinput()
         {   
             //正常情況
 
@@ -98,8 +98,13 @@ namespace team4
             Assert.AreEqual(3, team4.logoutinput.logout(1, "YFSDFSD"));//選擇登出，但後者選項不正確
             Assert.AreEqual(4, team4.logoutinput.logout(123, "Y"));//無法判斷是否有按下登出
             Assert.AreEqual(4, team4.logoutinput.logout(123, "FSDF"));//無法判斷是否有按下登出
-
         
+        */ 
+
+        [TestMethod]
+        public void email_varify()
+        {
+            Assert.IsTrue(Email_Varify.verify(1, "account_for_tim"));
         }
     }
 }
