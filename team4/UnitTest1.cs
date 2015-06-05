@@ -12,7 +12,7 @@ namespace team4
             user temp_user = new user("Tim", "account_for_tim", "Password", 1, "tim@mail.com");
             Assert.IsTrue(team4.database.addUser(temp_user));
             //Assert.IsTrue(true);
-
+            
         }
         [TestMethod]
         public void dbtest_getUser()
@@ -82,6 +82,7 @@ namespace team4
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    // logout
 	    [TestMethod]
 =======
@@ -104,10 +105,15 @@ namespace team4
 	// logout
 	[TestMethod]
 >>>>>>> parent of 1599390... email varify new version
+=======
+	// logout
+	[TestMethod]
+>>>>>>> parent of 2c50196... Change Login_Logout.cs to Login.cs and add Login test
             //1:登出
             //2:不登出
             //3:選擇登出但問題出在後者選項
             //4:前者選項有誤
+<<<<<<< HEAD
         public void logoutinput()
         {   
 =======
@@ -120,6 +126,10 @@ namespace team4
         public void logoutinput()
         {
 >>>>>>> 2c501968272871295f9b33edc4808ab9ffe73bd0
+=======
+        public void logoutinput()
+        {   
+>>>>>>> parent of 2c50196... Change Login_Logout.cs to Login.cs and add Login test
             //正常情況
 
             Assert.AreEqual(1, team4.logoutinput.logout(1, "Y"));//選擇登出並確定
@@ -127,9 +137,9 @@ namespace team4
             Assert.AreEqual(2, team4.logoutinput.logout(2, ""));//沒選擇登出
             Assert.AreEqual(2, team4.logoutinput.logout(2, "Y"));//沒選擇登出，後者選項不跳出
             Assert.AreEqual(2, team4.logoutinput.logout(2, "N"));//沒選擇登出，後者選項不跳出
-
+           
             //非正常情況
-
+            
             Assert.AreEqual(3, team4.logoutinput.logout(1, ""));//選擇登出但未確定
             Assert.AreEqual(3, team4.logoutinput.logout(1, "YFSDFSD"));//選擇登出，但後者選項不正確
             Assert.AreEqual(4, team4.logoutinput.logout(123, "Y"));//無法判斷是否有按下登出
@@ -149,6 +159,7 @@ namespace team4
             Assert.IsTrue(Email_Varify.verify(1, "account_for_tim"));
 =======
 
+<<<<<<< HEAD
 
         }
         [TestMethod]
@@ -180,6 +191,9 @@ namespace team4
 
         
 >>>>>>> parent of 1599390... email varify new version
+=======
+        
+>>>>>>> parent of 2c50196... Change Login_Logout.cs to Login.cs and add Login test
         }
     }
 }

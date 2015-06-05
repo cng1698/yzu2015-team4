@@ -55,8 +55,7 @@
     <Compile Include="getdata.cs" />
     <Compile Include="Email_Varify.cs" />
     <Compile Include="Creat_good.cs" />
-    <Compile Include="Login.cs" />
-    <Compile Include="logout.cs" />
+    <Compile Include="Login_Logout.cs" />
     <Compile Include="Register.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
