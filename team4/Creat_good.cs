@@ -55,7 +55,12 @@ namespace team4
         }
         public static bool CheckPicture(string picture)
         {
+            string[] img = picture.Split('.');
             if (picture == "")
+            {
+                return false;
+            }
+            else if (img[1] != "jpg" )
             {
                 return false;
             }

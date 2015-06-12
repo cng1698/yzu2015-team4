@@ -149,6 +149,7 @@ namespace team4
             Assert.AreEqual(false, team4.Creat_good.CheckAmount(-30));
 
             Assert.AreEqual(true, team4.Creat_good.CheckPicture("M8.jpg"));
+            Assert.AreEqual(false, team4.Creat_good.CheckPicture("M8.txt"));
             Assert.AreEqual(false, team4.Creat_good.CheckPicture(""));
         }
         [TestMethod]
