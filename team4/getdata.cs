@@ -225,5 +225,42 @@ namespace team4
             file.Close();
             return goodList;
         }
+
+        static public bool writeBackGood(List<good> goodList)
+        {
+            foreach (good g in goodList)
+            {
+                string data = g.name + "\t" + g.content + "\t" + g.amount.ToString() + "\t" + g.price.ToString() + "\t"
+                    + g.picture + "\t" + g.bid.ToString() + "\t" + g.buyer + "\t" + g.seller + "\n";
+
+                try
+                {
+                    System.IO.File.AppendAllText(good_path, data);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        static public bool editGood(good ori, good res)//the origin user -> the result user
+        {
+            List<good> goodList = getAllGood();
+            foreach (good g in goodList)
+            {
+                if (g == ori)
+                {
+                    goodList.Remove(g);
+                    goodList.Add(res);
+                    writeBackGood(goodList);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
     }
 }
