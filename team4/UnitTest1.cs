@@ -153,7 +153,12 @@ namespace team4
             Assert.AreEqual(true, team4.Creat_good.SetGood("HTC", "M8", 20000, 10, "M8.jpg", "Tim"));
             // Assert.AreEqual(false, team4.Creat_good.CreatGood("HTC", "M8", 20000, 10, "M8.jpg", "Tim"));
         }
-
+        [TestMethod]
+        public void DirectlyBuy_test()
+        {
+            
+            
+        }
       
     }
 }
