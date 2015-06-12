@@ -6,6 +6,13 @@ namespace team4
     [TestClass]
     public class UnitTest1
     {
+        [ClassInitialize()]
+        public static void dbreset(TestContext testContext)
+        {
+            team4.database.dbInit();
+        }
+
+
         [TestMethod]
         public void dbtest_addUser()
         {
@@ -75,6 +82,13 @@ namespace team4
             Assert.AreEqual(true, team4.Register.CheckEmail("1234@4567"));
             Assert.AreEqual(false, team4.Register.CheckEmail(""));
             Assert.AreEqual(false, team4.Register.CheckEmail("12345"));
+        }
+        [TestMethod]
+        public void CheckRegisterSuccess()
+        {
+            user new_user = new user("Annie", "annie0000", "12345678", 1, "1234@4567");
+            Assert.AreEqual(true, team4.Register.RegisterSuccess(new_user));
+
         }
 		 // logout
         [TestMethod]

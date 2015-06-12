@@ -72,5 +72,11 @@ namespace team4
             else
                 return false;
         }
+
+        internal static bool RegisterSuccess(user new_user)
+        {
+
+            return database.addUser(new_user);
+        }
     }
 }
