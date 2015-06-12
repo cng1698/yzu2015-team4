@@ -19,40 +19,27 @@ namespace team4
 		//public int id;
 		
 		public user(string name_in, string account_in, string pwd_in, int role_in, string email_in)//id should be auto assigned by database
-			{
+		{
 				name = name_in;
 				account = account_in;
 				pwd = pwd_in;
 				role = role_in;
 				email = email_in;
-				
-				//id = getUserLastID();
-			}
-        /*
-		static public int getUserLastID()
-		{
-            try
-            {
-                System.IO.StreamReader file = new System.IO.StreamReader(@"..\..\..\database\account_db_dummy");
-                string line;
-                int last_id = 1;//start form 1
-                char[] split_delim = { '\t' };
-                while ((line = file.ReadLine()) != null)
-                {
-                    string[] data_set = line.Split(split_delim);
-                    last_id = Convert.ToInt32(data_set[5]);
-                }
-                return last_id;
-            }
-            catch
-            {
-                return 0;
-            }
-			
 		}
-        */
-        
-		
+        public static bool operator ==(user usr1, user usr2)
+        {
+            if (usr1.Equals(usr2))
+                return true;
+            else
+                return false;
+        }
+        public static bool operator !=(user usr1, user usr2)
+        {
+            if (usr1.Equals(usr2))
+                return false;
+            else
+                return true;
+        }
     }
 
     public struct good
@@ -66,8 +53,6 @@ namespace team4
         public string buyer;
         public string seller;
 		
-		//public int id;
-		
 		public good(string name_in, string content_in, int amount_in, int price_in, string picture_in, int bid_in, string buyer_in, string seller_in)
 		{
 			name = name_in;
@@ -78,24 +63,21 @@ namespace team4
 			bid = bid_in;
 			buyer = buyer_in;
 			seller = seller_in;
-			
-			//id = getGoodLastID();
 		}
-		/*
-		static public int getGoodLastID()
-		{
-            System.IO.StreamReader file = new System.IO.StreamReader(@"../../../../../database/good_db_dummy");
-            string line;
-            int last_id = 1;//start form 1
-            char[] split_delim = { '\t' };
-			while((line = file.ReadLine()) != null)
-			{
-                string[] data_set = line.Split(split_delim);
-				last_id = Convert.ToInt32(data_set[8]);
-			}
-			return last_id;
-		}
-        */
+        public static bool operator ==(good good1, good good2)
+        {
+            if (good1.Equals(good2))
+                return true;
+            else
+                return false;
+        }
+        public static bool operator !=(good good1, good good2)
+        {
+            if (good1.Equals(good2))
+                return false;
+            else
+                return true;
+        }
     }
 
     class database
@@ -124,8 +106,6 @@ namespace team4
             
             return true;
 		}
-
-
 		
         static public user getUserByAccount(string account)//get user by account, return it, if not exist, return a user with all filds are initialized
         {
@@ -157,7 +137,42 @@ namespace team4
                 user res = new user(data_set[0], data_set[1], data_set[2], Convert.ToInt32(data_set[3]), data_set[4]);
                 userList.Add(res);
             }
+            file.Close();
             return userList;
+        }
+
+        static public bool writeBackUser(List<user> userList)
+        {
+            foreach (user usr in userList)
+            {
+                string data = usr.name + "\t" + usr.account + "\t" + usr.pwd + "\t" + usr.role.ToString() + "\t" + usr.email + "\n";
+
+                try
+                {
+                    System.IO.File.AppendAllText(account_path, data);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        static public bool editUser(user ori, user res)//the origin user -> the result user
+        {
+            List<user> userList = getAllUser();
+            foreach (user usr in userList)
+            {
+                if (usr == ori)
+                {
+                    userList.Remove(usr);
+                    userList.Add(res);
+                    writeBackUser(userList);
+                    return true;
+                }
+            }
+            return false;
         }
 
         static public bool addGood(good new_good)
@@ -196,5 +211,19 @@ namespace team4
             return temp;
         }
 
+        static public List<good> getAllGood()
+        {
+            System.IO.StreamReader file = new System.IO.StreamReader(@good_path);
+            string line;
+            List<good> goodList = new List<good> { };
+            while ((line = file.ReadLine()) != null)
+            {
+                string[] data_set = line.Split(split_delim);
+                good res = new good(data_set[0], data_set[1], Convert.ToInt32(data_set[2]), Convert.ToInt32(data_set[3]), data_set[4], Convert.ToInt32(data_set[5]), data_set[6], data_set[7]);
+                goodList.Add(res);
+            }
+            file.Close();
+            return goodList;
+        }
     }
 }
