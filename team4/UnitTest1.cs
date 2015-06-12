@@ -26,6 +26,7 @@ namespace team4
             good temp_good = new good("iPhone", "bank_transfer", 20, 25000, "iPhone.jpg", 50, "\0", "Tim");
             Assert.IsTrue(team4.database.addGood(temp_good));
         }
+               
         [TestMethod]
         public void dbtest_getGood()
         {
@@ -136,15 +137,23 @@ namespace team4
             Assert.AreEqual(true, team4.Creat_good.CheckPicture("M8.jpg"));
             Assert.AreEqual(false, team4.Creat_good.CheckPicture(""));
         }
-
         [TestMethod]
         public void CheckSetGood()
         {
-            //Assert.AreEqual(true, team4.Creat_good.SetGood("HTC", "M8", 20000, 10, "M8.jpg", "Tim"));
-            // Assert.AreEqual(false, team4.Creat_good.CreatGood("HTC", "M8", 20000, 10, "M8.jpg", "Tim"));
-
-            //good temp_good = new good("iPhone", "bank_transfer", 20, 25000, "iPhone.jpg", 50, "\0", "Messi");
-            //Assert.IsTrue(team4.database.addGood(temp_good));
+            Assert.AreEqual(true, team4.Creat_good.SetGood("HTC", "M8", 20000, 10, "M8.jpg", "Tim"));
         }
+        [TestMethod]
+        public void SearchGood()
+        {
+            Assert.AreEqual("HTC", team4.search.SearchName("HTC"));
+            Assert.AreEqual("M8", team4.search.SearchContent("HTC"));
+        }
+        [TestMethod]
+        public void DirectlyBuy_test()
+        {
+            
+            
+        }
+      
     }
 }

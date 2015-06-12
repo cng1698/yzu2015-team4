@@ -132,10 +132,11 @@ namespace team4
 				if(data_set[1] == account)
 				{
                     user res = new user(data_set[0], data_set[1], data_set[2], Convert.ToInt32(data_set[3]), data_set[4]);
+                    file.Close();
                     return res;
 				}
 			}
-
+            file.Close();
             user temp = new user();//empty user
             return temp;
         }
@@ -181,10 +182,11 @@ namespace team4
                 if (data_set[0] == name)
                 {
                     good res = new good(data_set[0], data_set[1], Convert.ToInt32(data_set[2]), Convert.ToInt32(data_set[3]), data_set[4], Convert.ToInt32(data_set[5]), data_set[6], data_set[7]);
+                    file.Close();
                     return res;
                 }
             }
-
+            file.Close();
             good temp = new good();//empty good
             return temp;
         }

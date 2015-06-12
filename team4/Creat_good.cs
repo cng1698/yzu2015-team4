@@ -66,10 +66,6 @@ namespace team4
         }
         public static bool SetGood(string name, string content, int price, int amount, string picture, string seller)
         {
-
-            //good temp_good = new good("iPhone", "bank_transfer", 20, 25000, "iPhone.jpg", 50, "\0", "Tim");
-            //Assert.IsTrue(team4.database.addGood(temp_good));
-
             good temp_good = new good(name, content, amount, price, picture, 0, "\0", seller);
 
             return team4.database.addGood(temp_good);
