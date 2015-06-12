@@ -6,6 +6,13 @@ namespace team4
     [TestClass]
     public class UnitTest1
     {
+        [ClassInitialize()]
+        public static void dbreset(TestContext testContext)
+        {
+            team4.database.dbInit();
+        }
+
+
         [TestMethod]
         public void dbtest_addUser()
         {

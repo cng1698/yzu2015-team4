@@ -104,6 +104,11 @@ namespace team4
         public static string good_path = @"..\..\..\database\good_db_dummy";
 		public static char[] split_delim = { '\t' };
 
+        static public void dbInit()
+        {
+            File.Delete(account_path);
+            File.Delete(good_path);
+        }
 
         static public bool addUser(user new_user)
         {
