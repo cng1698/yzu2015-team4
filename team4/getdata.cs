@@ -162,11 +162,12 @@ namespace team4
         static public bool editUser(user ori, user res)//the origin user -> the result user
         {
             List<user> userList = getAllUser();
-            foreach (user usr in userList)
+            File.Delete(account_path);
+            for (int i = 0; i < userList.Count; i ++)
             {
-                if (usr == ori)
+                if (userList[i] == ori)
                 {
-                    userList.Remove(usr);
+                    userList.RemoveAt(i);
                     userList.Add(res);
                     writeBackUser(userList);
                     return true;
