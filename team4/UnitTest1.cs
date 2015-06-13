@@ -6,41 +6,35 @@ namespace team4
     [TestClass]
     public class UnitTest1
     {
+        /*
         [ClassInitialize()]
         public static void dbreset(TestContext testContext)
         {
-            team4.database.dbInit();
-        }
-
-
-        [TestMethod]
-        public void dbtest_addUser()
-        {
-            user temp_user = new user("Tim", "account_for_tim", "Password", 1, "tim@mail.com");
-            Assert.IsTrue(team4.database.addUser(temp_user));
-            //Assert.IsTrue(true);
             
         }
+        */
+
         [TestMethod]
-        public void dbtest_getUser()
+        public void 檢查使用者新增()
         {
+            team4.database.dbInit();
+
             user temp_user = new user("Tim", "account_for_tim", "Password", 1, "tim@mail.com");
+            Assert.IsTrue(team4.database.addUser(temp_user));
             Assert.AreEqual(temp_user.role, team4.database.getUserByAccount("account_for_tim").role);
+
         }
+        
         [TestMethod]
-        public void dbtest_addGood()
+        public void 檢查商品新增()
         {
+            team4.database.dbInit();
+
             good temp_good = new good("iPhone", "bank_transfer", 20, 25000, "iPhone.jpg", 50, "\0", "Tim");
             Assert.IsTrue(team4.database.addGood(temp_good));
-        }
-               
-        [TestMethod]
-        public void dbtest_getGood()
-        {
-            good temp_good = new good("iPhone", "bank_transfer", 20, 25000, "iPhone.jpg", 50, "\0", "Tim");
             Assert.AreEqual(temp_good.price, team4.database.getGoodByName("iPhone").price);
         }
-
+        
         //Register part
         [TestMethod]
         public void CheckRegisterInputFormatName()
@@ -48,12 +42,18 @@ namespace team4
             //Name
             Assert.AreEqual(false, team4.Register.CheckName(""));
         }
+        
         [TestMethod]
         public void CheckRegisterInputFormatAccount()
         {
+            team4.database.dbInit();
+            
             //Account
             Assert.AreEqual(false, team4.Register.CheckAccount(""));
             Assert.AreEqual(true, team4.Register.CheckAccount("kkendsss"));
+
+            user temp_user = new user("Tim", "account_for_tim", "Password", 1, "tim@mail.com");
+            team4.database.addUser(temp_user);
 
             Assert.AreEqual(false, team4.Register.CheckAccountNotExist("1234"));
             Assert.AreEqual(true, team4.Register.CheckAccountNotExist("account_for_tim"));
@@ -83,12 +83,13 @@ namespace team4
             Assert.AreEqual(false, team4.Register.CheckEmail(""));
             Assert.AreEqual(false, team4.Register.CheckEmail("12345"));
         }
+        
         [TestMethod]
         public void CheckRegisterSuccess()
         {
+            team4.database.dbInit();
             user new_user = new user("Annie", "annie0000", "12345678", 1, "1234@4567");
             Assert.AreEqual(true, team4.Register.RegisterSuccess(new_user));
-
         }
 		 // logout
         [TestMethod]
@@ -115,9 +116,15 @@ namespace team4
 
 
         }
+        
         [TestMethod]
         public void Login_test()
         {
+            team4.database.dbInit();
+
+            user temp_user = new user("Tim", "account_for_tim", "Password", 1, "tim@mail.com");
+            Assert.IsTrue(team4.database.addUser(temp_user));
+            
             //Success
             Assert.AreEqual("登入成功", Login.Check("account_for_tim", "Password"));
 
@@ -133,6 +140,7 @@ namespace team4
             Assert.AreEqual("帳號或密碼錯誤", Login.Check("asds15156156", "Password"));
         }
         //Creat_Good
+        
         [TestMethod]
         public void CheckCreatGood()
         {
@@ -152,23 +160,27 @@ namespace team4
             Assert.AreEqual(false, team4.Creat_good.CheckPicture("M8.txt"));
             Assert.AreEqual(false, team4.Creat_good.CheckPicture(""));
         }
+        
         [TestMethod]
         public void CheckSetGood()
         {
+            team4.database.dbInit();
+
             Assert.AreEqual(true, team4.Creat_good.SetGood("HTC", "M8", 20000, 10, "M8.jpg", "Tim"));
-        }
-        [TestMethod]
-        public void SearchGood()
-        {
             Assert.AreEqual("HTC", team4.search.SearchName("HTC"));
             Assert.AreEqual("M8", team4.search.SearchContent("HTC"));
         }
-        [TestMethod]
+                   
+       /* [TestMethod]
         public void DirectlyBuy_test()
         {
+            good TestGood = new good("Apple", "an apple", 10, 100, "Apple.jpg", 0, "", "yan");
+            good want = database.getGoodByName("Apple");
+            Assert.AreEqual("庫存不足", DirectlyBuy.Buy(want, "ASD", 11));
+            DirectlyBuy.Buy(want, "ASD", 5);
+            want = database.getGoodByName("Apple");
             
-            
-        }
+        }*/
       
     }
 }

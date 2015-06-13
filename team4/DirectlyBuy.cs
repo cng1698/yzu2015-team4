@@ -8,18 +8,23 @@ namespace team4
 {
     class DirectlyBuy
     {
-        public static string Buy(good want,string buyer)
+        public static string Buy(good want,string buyer,int NumberOfgood)
         {
             if(want.amount < 1)
             {
                 return "已售完";
             }
+            else if(want.amount < NumberOfgood)
+            {
+                return "庫存不足";
+            }
             else
             {
-                want.buyer = buyer;
-                want.amount--;
+                good NewWant = want;
+                NewWant.buyer = buyer;
+                NewWant.amount -= NumberOfgood;
+                database.editGood(want, NewWant);
                 return "購買成功";
-                //save to db
             }
         }
     }
