@@ -126,18 +126,18 @@ namespace team4
             Assert.IsTrue(team4.database.addUser(temp_user));
             
             //Success
-            Assert.AreEqual("登入成功", Login.Check("account_for_tim", "Password"));
+            Assert.AreEqual("登入成功", Login.Check(temp_user.account, temp_user.pwd));
 
             //空白帳密
             Assert.AreEqual("帳號及密碼不得為空", Login.Check("", ""));
-            Assert.AreEqual("帳號及密碼不得為空", Login.Check("", "Password"));
-            Assert.AreEqual("帳號及密碼不得為空", Login.Check("account_for_tim", ""));
+            Assert.AreEqual("帳號及密碼不得為空", Login.Check("", temp_user.pwd));
+            Assert.AreEqual("帳號及密碼不得為空", Login.Check(temp_user.account, ""));
             Assert.AreEqual("帳號及密碼不得為空", Login.Check("023545", ""));
             Assert.AreEqual("帳號及密碼不得為空", Login.Check("", "15654561"));
 
             //帳號密碼錯誤
-            Assert.AreEqual("帳號或密碼錯誤", Login.Check("account_for_tim", "12456156"));
-            Assert.AreEqual("帳號或密碼錯誤", Login.Check("asds15156156", "Password"));
+            Assert.AreEqual("帳號或密碼錯誤", Login.Check(temp_user.account, "12456156"));
+            Assert.AreEqual("帳號或密碼錯誤", Login.Check("asds15156156", temp_user.pwd));
         }
         //Creat_Good
         
@@ -171,16 +171,23 @@ namespace team4
             Assert.AreEqual("M8", team4.search.SearchContent("HTC"));
         }
                    
-       /* [TestMethod]
+        [TestMethod]
         public void DirectlyBuy_test()
         {
+            team4.database.dbInit();
+
             good TestGood = new good("Apple", "an apple", 10, 100, "Apple.jpg", 0, "", "yan");
+            database.addGood(TestGood);
             good want = database.getGoodByName("Apple");
+
             Assert.AreEqual("庫存不足", DirectlyBuy.Buy(want, "ASD", 11));
-            DirectlyBuy.Buy(want, "ASD", 5);
+
+
+            Assert.AreEqual("購買成功", DirectlyBuy.Buy(want, "ASD", 5));
             want = database.getGoodByName("Apple");
-            
-        }*/
+            Assert.AreEqual("ASD", want.buyer);
+            Assert.AreEqual(5, want.amount);
+        }
       
     }
 }

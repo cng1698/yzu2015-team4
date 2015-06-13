@@ -248,11 +248,12 @@ namespace team4
         static public bool editGood(good ori, good res)//the origin user -> the result user
         {
             List<good> goodList = getAllGood();
-            foreach (good g in goodList)
+            File.Delete(good_path);
+            for (int i = 0; i < goodList.Count; i++ )
             {
-                if (g == ori)
+                if (goodList[i] == ori)
                 {
-                    goodList.Remove(g);
+                    goodList.RemoveAt(i);
                     goodList.Add(res);
                     writeBackGood(goodList);
                     return true;
