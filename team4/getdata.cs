@@ -82,8 +82,8 @@ namespace team4
 
     class database
     {
-        public static string account_path = @"..\..\..\database\account_db_dummy";
-        public static string good_path = @"..\..\..\database\good_db_dummy";
+        public static string account_path = @"account_db_dummy";
+        public static string good_path = @"good_db_dummy";
 		public static char[] split_delim = { '\t' };
 
         static public void dbInit()
