@@ -55,8 +55,8 @@ namespace team4
             user temp_user = new user("Tim", "account_for_tim", "Password", 1, "tim@mail.com");
             team4.database.addUser(temp_user);
 
-            Assert.AreEqual(false, team4.Register.CheckAccountNotExist("1234"));
-            Assert.AreEqual(true, team4.Register.CheckAccountNotExist("account_for_tim"));
+            Assert.AreEqual(true, team4.Register.CheckAccountExist("1234"));
+            Assert.AreEqual(false, team4.Register.CheckAccountExist("account_for_tim"));
         }
 
         [TestMethod]
