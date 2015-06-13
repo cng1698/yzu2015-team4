@@ -182,11 +182,15 @@ namespace team4
 
             Assert.AreEqual("庫存不足", DirectlyBuy.Buy(want, "ASD", 11));
 
-
             Assert.AreEqual("購買成功", DirectlyBuy.Buy(want, "ASD", 5));
             want = database.getGoodByName("Apple");
             Assert.AreEqual("ASD", want.buyer);
             Assert.AreEqual(5, want.amount);
+
+            want = database.getGoodByName("Apple");
+            Assert.AreEqual("購買成功", DirectlyBuy.Buy(want, "ASD", 5));
+            want = database.getGoodByName("Apple");
+            Assert.AreEqual("已售完", DirectlyBuy.Buy(want, "ASD", 5));
         }
       
     }
