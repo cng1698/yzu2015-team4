@@ -25,10 +25,10 @@ namespace team4
             return false;
         }
 
-        internal static bool CheckAccountNotExist(string account)
+        internal static bool CheckAccountExist(string account)
         {
 
-            if (database.getUserByAccount(account).account != null)
+            if (database.getUserByAccount(account).account == null)
                 return true;
 
             return false;
@@ -75,8 +75,14 @@ namespace team4
 
         internal static bool RegisterSuccess(user new_user)
         {
-
-            return database.addUser(new_user);
+            if (CheckName(new_user.name)
+                    && CheckAccount(new_user.account)
+                    && CheckPassword(new_user.pwd)
+                    && CheckRole(new_user.role)
+                    && CheckEmail(new_user.email))
+                return database.addUser(new_user);
+            else
+                return false;
         }
     }
 }
