@@ -128,6 +128,26 @@ namespace team4
             return temp;
         }
 
+        static public user getUserByEmail(string email)//get user by account, return it, if not exist, return a user with all filds are initialized
+        {
+            System.IO.StreamReader file = new System.IO.StreamReader(@account_path);
+            string line;
+            while ((line = file.ReadLine()) != null)
+            {
+                string[] data_set = line.Split(split_delim);
+                if (data_set[4] == email)
+                {
+                    user res = new user(data_set[0], data_set[1], data_set[2], Convert.ToInt32(data_set[3]), data_set[4], data_set[5]);
+                    file.Close();
+                    return res;
+                }
+            }
+            file.Close();
+            user temp = new user();//empty user
+            return temp;
+        }
+
+
         static public List<user> getAllUser()
         {
             System.IO.StreamReader file = new System.IO.StreamReader(@account_path);

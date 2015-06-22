@@ -200,7 +200,7 @@ namespace team4
             user new_user = new user("Jerry", "Jerry_account", "12345678", 1, "1234@4567", "556");
             database.addUser(new_user);
 
-            Assert.IsTrue(Email_Varify.verify(556, "Jerry_account"));
+            Assert.IsTrue(Email_Varify.verify(556, "1234@4567"));
             //Assert.AreEqual( "Tim" , Email_Varify.try_() ) ;
         }
     }

@@ -21,8 +21,16 @@ namespace team4
 
     class Email_Varify
     {
+        internal static void send_mail(string account = "")
+        {
+            user user_data = database.getUserByAccount(account);
+            //send mail to user_data.email ;
 
-        internal static bool verify( int input , string account = "")
+        }
+
+
+
+        internal static bool verify( int input , string email = "")
         {
            /* account_varify user = new account_varify();
             user.account = "Jerry";
@@ -36,7 +44,8 @@ namespace team4
             else
                 return false ;*/
 
-            user user_data = database.getUserByAccount(account);
+            user user_data = database.getUserByEmail(email);
+
 
             if ( if_same(user_data.varify_code, input.ToString()))
                 return true;
@@ -44,6 +53,7 @@ namespace team4
                 return false;
 
         }
+
 
         /*internal static string produce_code()
         {
