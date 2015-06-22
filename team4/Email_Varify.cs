@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace team4
 {
 
-    public struct account_varify
+   /* public struct account_varify
     {
         public string account, verification_code;
 
@@ -17,14 +17,14 @@ namespace team4
             verification_code = b;
         }
     }
-
+    */
 
     class Email_Varify
     {
 
-        internal static bool verify()
+        internal static bool verify( int input , string account = "")
         {
-            account_varify user = new account_varify();
+           /* account_varify user = new account_varify();
             user.account = "Jerry";
             user.verification_code = produce_code();
 
@@ -34,29 +34,37 @@ namespace team4
             if( if_same(user.verification_code , input))
                 return true ;
             else
-                return false ;
+                return false ;*/
+
+            user user_data = database.getUserByAccount(account);
+
+            if ( if_same(user_data.varify_code, input.ToString()))
+                return true;
+            else
+                return false;
 
         }
 
-        internal static string produce_code()
+        /*internal static string produce_code()
         {
             string code = "abcd";
 
-            /*int i = 0 ;
+            int i = 0 ;
             while (i < 4)
             {
                 code += 
                 i++;
-            }*/
+            }
             return code;
-        }
+        }*/
 
-        internal static bool if_same( string a , string b )
+        internal static bool if_same( string varify_code , string input )
         {
-            if( a== b )
+            if (varify_code == input)
                 return true ;
             else 
                 return false;
         }
+
     }
 }

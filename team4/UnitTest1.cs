@@ -19,7 +19,7 @@ namespace team4
         {
             team4.database.dbInit();
 
-            user temp_user = new user("Tim", "account_for_tim", "Password", 1, "tim@mail.com");
+            user temp_user = new user("Tim", "account_for_tim", "Password", 1, "tim@mail.com" , "663" );
             Assert.IsTrue(team4.database.addUser(temp_user));
             Assert.AreEqual(temp_user.role, team4.database.getUserByAccount("account_for_tim").role);
 
@@ -52,7 +52,7 @@ namespace team4
             Assert.AreEqual(false, team4.Register.CheckAccount(""));
             Assert.AreEqual(true, team4.Register.CheckAccount("kkendsss"));
 
-            user temp_user = new user("Tim", "account_for_tim", "Password", 1, "tim@mail.com");
+            user temp_user = new user("Tim", "account_for_tim", "Password", 1, "tim@mail.com" , "663");
             team4.database.addUser(temp_user);
 
             Assert.AreEqual(true, team4.Register.CheckAccountExist("1234"));
@@ -88,7 +88,7 @@ namespace team4
         public void CheckRegisterSuccess()
         {
             team4.database.dbInit();
-            user new_user = new user("Annie", "annie0000", "12345678", 1, "1234@4567");
+            user new_user = new user("Annie", "annie0000", "12345678", 1, "1234@4567" , "663");
             Assert.AreEqual(true, team4.Register.RegisterSuccess(new_user));
         }
 		 // logout
@@ -122,7 +122,7 @@ namespace team4
         {
             team4.database.dbInit();
 
-            user temp_user = new user("Tim", "account_for_tim", "Password", 1, "tim@mail.com");
+            user temp_user = new user("Tim", "account_for_tim", "Password", 1, "tim@mail.com" ,"663");
             Assert.IsTrue(team4.database.addUser(temp_user));
             
             //Success
@@ -192,6 +192,16 @@ namespace team4
             want = database.getGoodByName("Apple");
             Assert.AreEqual("已售完", DirectlyBuy.Buy(want, "ASD", 5));
         }
-      
+
+        [TestMethod]
+        public void Varify_test()
+        {
+            team4.database.dbInit();
+            user new_user = new user("Jerry", "Jerry_account", "12345678", 1, "1234@4567", "556");
+            database.addUser(new_user);
+
+            Assert.IsTrue(Email_Varify.verify(556, "Jerry_account"));
+            //Assert.AreEqual( "Tim" , Email_Varify.try_() ) ;
+        }
     }
 }

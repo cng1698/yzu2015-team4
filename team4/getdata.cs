@@ -15,16 +15,18 @@ namespace team4
         public string pwd;
         public int role;
         public string email;
-        
+        public string varify_code;
+       
 		//public int id;
 		
-		public user(string name_in, string account_in, string pwd_in, int role_in, string email_in)//id should be auto assigned by database
+		public user(string name_in, string account_in, string pwd_in, int role_in, string email_in , string varify_in)//id should be auto assigned by database
 		{
 				name = name_in;
 				account = account_in;
 				pwd = pwd_in;
 				role = role_in;
 				email = email_in;
+                varify_code = varify_in;
 		}
         public static bool operator ==(user usr1, user usr2)
         {
@@ -94,7 +96,7 @@ namespace team4
 
         static public bool addUser(user new_user)
         {
-			string data = new_user.name + "\t" + new_user.account + "\t" + new_user.pwd + "\t" + new_user.role.ToString() + "\t" + new_user.email + "\n";
+			string data = new_user.name + "\t" + new_user.account + "\t" + new_user.pwd + "\t" + new_user.role.ToString() + "\t" + new_user.email + "\t" + new_user.varify_code +"\n";
 
             try
             {
@@ -116,7 +118,7 @@ namespace team4
 				string[] data_set = line.Split(split_delim);
 				if(data_set[1] == account)
 				{
-                    user res = new user(data_set[0], data_set[1], data_set[2], Convert.ToInt32(data_set[3]), data_set[4]);
+                    user res = new user(data_set[0], data_set[1], data_set[2], Convert.ToInt32(data_set[3]), data_set[4] ,data_set[5]);
                     file.Close();
                     return res;
 				}
@@ -134,7 +136,7 @@ namespace team4
             while ((line = file.ReadLine()) != null)
             {
                 string[] data_set = line.Split(split_delim);
-                user res = new user(data_set[0], data_set[1], data_set[2], Convert.ToInt32(data_set[3]), data_set[4]);
+                user res = new user(data_set[0], data_set[1], data_set[2], Convert.ToInt32(data_set[3]), data_set[4] , data_set[5]);
                 userList.Add(res);
             }
             file.Close();
@@ -145,7 +147,7 @@ namespace team4
         {
             foreach (user usr in userList)
             {
-                string data = usr.name + "\t" + usr.account + "\t" + usr.pwd + "\t" + usr.role.ToString() + "\t" + usr.email + "\n";
+                string data = usr.name + "\t" + usr.account + "\t" + usr.pwd + "\t" + usr.role.ToString() + "\t" + usr.email + "\t" + usr.varify_code + "\n";
 
                 try
                 {
