@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace team4
 {
@@ -201,6 +202,26 @@ namespace team4
             database.addUser(new_user);
 
             Assert.IsTrue(Email_Varify.verify(556, "1234@4567"));
+            //Assert.AreEqual( "Tim" , Email_Varify.try_() ) ;
+        }
+
+        [TestMethod]
+        public void modify_test()
+        {
+            team4.database.dbInit();
+            user new_user = new user("Jerry", "Jerry_account", "12345678", 1, "1234@4567", "556");
+            database.addUser(new_user);
+            new_user = new user("Ann", "Ann_account", "12345678", 1, "aaaa@4567", "556");
+            database.addUser(new_user);
+            new_user = new user("Joyce", "Joyce_account", "12345678", 1, "bbbb@4567", "556");
+            database.addUser(new_user);
+
+            ChangeAccountInfomation.ModifyEmailByAccount( "Joyce_account" , "cccc@2252") ;
+            ChangeAccountInfomation.ModifyEmailByAccount("Ann_account", "ggg@2252");
+            List<user> alluser = database.getAllUser() ;
+
+            Assert.AreEqual( "cccc@2252" , alluser[2].email) ;
+            Assert.AreEqual("ggg@2252", alluser[1].email);
             //Assert.AreEqual( "Tim" , Email_Varify.try_() ) ;
         }
     }
