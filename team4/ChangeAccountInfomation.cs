@@ -25,10 +25,26 @@ namespace team4
             database.dbInit();
             for (int i = 0; i < alluser.Count; i++)
                 database.addUser(alluser[i]);
-        
+
         }
 
+        static public void ModifyPasswordByAccount(string account, string new_pwd = "")
+        {
+            List<user> alluser = database.getAllUser();
+            for (int i = 0; i < alluser.Count; i++)
+            {
+                if (alluser[i].account == account)
+                {
+                    alluser[i] = new user(alluser[i].name, alluser[i].account, new_pwd,
+                        alluser[i].role, alluser[i].email, alluser[i].varify_code);
+                    break;
+                }
+            }
 
+            database.dbInit();
+            for (int i = 0; i < alluser.Count; i++)
+                database.addUser(alluser[i]);
+        }
 
 
 

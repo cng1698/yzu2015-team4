@@ -218,10 +218,15 @@ namespace team4
 
             ChangeAccountInfomation.ModifyEmailByAccount( "Joyce_account" , "cccc@2252") ;
             ChangeAccountInfomation.ModifyEmailByAccount("Ann_account", "ggg@2252");
+            ChangeAccountInfomation.ModifyPasswordByAccount("Joyce_account", "aabbc"); 
+
+
+
             List<user> alluser = database.getAllUser() ;
 
             Assert.AreEqual( "cccc@2252" , alluser[2].email) ;
             Assert.AreEqual("ggg@2252", alluser[1].email);
+            Assert.AreEqual("aabbc", alluser[2].pwd);
             //Assert.AreEqual( "Tim" , Email_Varify.try_() ) ;
         }
     }
