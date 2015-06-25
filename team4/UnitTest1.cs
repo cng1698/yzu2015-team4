@@ -168,10 +168,38 @@ namespace team4
             team4.database.dbInit();
 
             Assert.AreEqual(true, team4.Creat_good.SetGood("HTC", "M8", 20000, 10, "M8.jpg", "Tim"));
+           
+        }
+
+        // SearchGood 
+        [TestMethod]
+        public void SearchGood()
+        {
+            team4.database.dbInit();
+
+            Assert.AreEqual(true, team4.Creat_good.SetGood("HTC", "M8", 20000, 10, "M8.jpg", "Tim"));
+           
             Assert.AreEqual("HTC", team4.search.SearchName("HTC"));
             Assert.AreEqual("M8", team4.search.SearchContent("HTC"));
         }
-                   
+
+        //delet/edit good
+        [TestMethod]
+        public void EditDeletGood()
+        {
+            team4.database.dbInit();
+
+            Assert.AreEqual(true, team4.Creat_good.SetGood("HTC", "M8", 20000, 10, "M8.jpg", "Tim"));
+
+            Assert.AreEqual(true, team4.EditDeletGood.EditContent("HTC", "Z3"));
+            Assert.AreEqual(true, team4.EditDeletGood.EditAmount("HTC", 30));
+            Assert.AreEqual(true, team4.EditDeletGood.EditPrice("HTC", 30000));
+            Assert.AreEqual(true, team4.EditDeletGood.EditPicture("HTC", "Z3.jpg"));
+            Assert.AreEqual(true, team4.EditDeletGood.EditName("HTC", "SONY"));
+
+            Assert.AreEqual(true, team4.EditDeletGood.Delet("SONY"));
+        }
+
         [TestMethod]
         public void DirectlyBuy_test()
         {

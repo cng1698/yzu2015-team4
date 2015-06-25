@@ -285,6 +285,22 @@ namespace team4
             return false;
         }
 
+        static public bool deletGood(good ori)
+        {
+            List<good> goodList = getAllGood();
+            File.Delete(good_path);
+            for (int i = 0; i < goodList.Count; i++)
+            {
+                if (goodList[i] == ori)
+                {
+                    goodList.RemoveAt(i);
+                    writeBackGood(goodList);
+                    return true;
+                }
+            }
+            return false;
+        }
+
 
     }
 }
