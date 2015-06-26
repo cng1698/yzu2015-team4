@@ -38,14 +38,14 @@ namespace team4
         
         //Register part
         [TestMethod]
-        public void CheckRegisterInputFormatName()
+        public void 檢查註冊名稱格式()
         {
             //Name
             Assert.AreEqual(false, team4.Register.CheckName(""));
         }
         
         [TestMethod]
-        public void CheckRegisterInputFormatAccount()
+        public void 檢查註冊帳號格式()
         {
             team4.database.dbInit();
             
@@ -61,14 +61,14 @@ namespace team4
         }
 
         [TestMethod]
-        public void CheckRegisterInputFormatPassword()
+        public void 檢查註冊密碼格式()
         {
             //Password
             Assert.AreEqual(false, team4.Register.CheckPassword(""));
         }
 
         [TestMethod]
-        public void CheckRegisterInputFormatRole()
+        public void 檢查註冊角色格式()
         {
             //Role
             Assert.AreEqual(false, team4.Register.CheckRole(3));
@@ -77,7 +77,7 @@ namespace team4
         }
 
         [TestMethod]
-        public void CheckRegisterInputFormatEmail()
+        public void 檢查註冊信箱格式()
         {
             //Email
             Assert.AreEqual(true, team4.Register.CheckEmail("1234@4567"));
@@ -86,7 +86,7 @@ namespace team4
         }
         
         [TestMethod]
-        public void CheckRegisterSuccess()
+        public void 檢查註冊成功()
         {
             team4.database.dbInit();
             user new_user = new user("Annie", "annie0000", "12345678", 1, "1234@4567" , "663");
