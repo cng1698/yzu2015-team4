@@ -249,6 +249,24 @@ namespace team4
             return goodList;
         }
 
+        static public List<good> getAllGoodByPrice()
+        {
+            System.IO.StreamReader file = new System.IO.StreamReader(@good_path);
+            string line;
+            List<good> goodList = new List<good> { };
+            while ((line = file.ReadLine()) != null)
+            {
+                string[] data_set = line.Split(split_delim);
+                good res = new good(data_set[0], data_set[1], Convert.ToInt32(data_set[2]), Convert.ToInt32(data_set[3]), data_set[4], Convert.ToInt32(data_set[5]), data_set[6], data_set[7]);
+                goodList.Add(res);
+            }
+            file.Close();
+
+            goodList.Sort((s1, s2) => s2.price.CompareTo(s1.price));//sort from high to low
+
+            return goodList;
+        }
+
         static public bool writeBackGood(List<good> goodList)
         {
             foreach (good g in goodList)

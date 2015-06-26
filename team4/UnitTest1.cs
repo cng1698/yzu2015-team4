@@ -286,5 +286,25 @@ namespace team4
             Assert.AreEqual(200, want.bid);
             Assert.AreEqual("abab", want.buyer);
         }
+        [TestMethod]
+        public void 價格排序測試()
+        {
+            team4.database.dbInit();
+
+            good TestGood1 = new good("Apple", "an apple", 10, 200, "Apple.jpg", 0, "", "yan");
+            good TestGood2 = new good("HTC", "help_this_company", 10, 100, "HTC.jpg", 0, "", "yan");
+            good TestGood3 = new good("Samsong", "Copying_apple_like_a_boss_hue", 10, 50, "3*.jpg", 0, "", "yan");
+            
+            database.addGood(TestGood2); //HTC was add first
+            database.addGood(TestGood3);
+            database.addGood(TestGood1);
+
+            List<good> testList = database.getAllGoodByPrice();
+
+            Assert.AreEqual(TestGood1, testList[0]);
+            Assert.AreEqual(TestGood2, testList[1]);
+            Assert.AreEqual(TestGood3, testList[2]);
+        }
+    
     }
 }
