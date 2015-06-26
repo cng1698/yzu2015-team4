@@ -257,5 +257,34 @@ namespace team4
             Assert.AreEqual("aabbc", alluser[2].pwd);
             //Assert.AreEqual( "Tim" , Email_Varify.try_() ) ;
         }
+        [TestMethod]
+        public void Bid_test()
+        {
+            team4.database.dbInit();
+
+            good TestGood = new good("Apple", "an apple", 10, 100, "Apple.jpg", 0, "", "yan");
+            database.addGood(TestGood);
+            good want = database.getGoodByName("Apple");
+
+            Assert.AreEqual("出價金額過低", bid.Bid(want, 50, "yan"));
+            Assert.AreEqual("出價成功", bid.Bid(want, 100, "yan"));
+            want = database.getGoodByName("Apple");
+            Assert.AreEqual(100, want.bid);
+            Assert.AreEqual("yan", want.buyer);
+            Assert.AreEqual("出價成功", bid.Bid(want, 110, "yan"));
+            want = database.getGoodByName("Apple");
+            Assert.AreEqual(110, want.bid);
+            Assert.AreEqual("yan", want.buyer);
+
+            Assert.AreEqual("出價金額未超過目前出價,請重新出價", bid.Bid(want, 105, "abab"));
+            want = database.getGoodByName("Apple");
+            Assert.AreEqual(110, want.bid);
+            Assert.AreEqual("yan", want.buyer);
+
+            Assert.AreEqual("出價成功", bid.Bid(want, 200, "abab"));
+            want = database.getGoodByName("Apple");
+            Assert.AreEqual(200, want.bid);
+            Assert.AreEqual("abab", want.buyer);
+        }
     }
 }

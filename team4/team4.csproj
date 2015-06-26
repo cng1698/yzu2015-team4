@@ -25,7 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\Jerry\AppData\Local\Temp\vs7845.tmp\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\user\AppData\Local\Temp\vsB9B2.tmp\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,7 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\Jerry\AppData\Local\Temp\vs7845.tmp\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\user\AppData\Local\Temp\vsB9B2.tmp\Release\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -52,6 +52,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="bid.cs" />
     <Compile Include="ChangeAccountInfomation.cs" />
     <Compile Include="DirectlyBuy.cs" />
     <Compile Include="EditDeletGood.cs" />
